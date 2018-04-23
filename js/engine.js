@@ -79,7 +79,7 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+        checkCollisions();
     }
 
     /* This is called by the update function and loops through all of the
@@ -94,6 +94,25 @@ var Engine = (function(global) {
             enemy.update(dt);
         });
         player.update();
+    }
+
+    /*
+    * This function will check if the player has been touched by an enemy
+    * by checking if one of the enemies y coordinates is equal to that of
+    * the player
+    */
+    function checkCollisions() {
+        allEnemies.forEach(enemy => {
+            if((player.y - enemy.y < 3) &&
+                (player.x - enemy.x < 5 && player.x-enemy.x > -5)){
+                console.log('***');
+                console.log('player ', 'x ', player.x, ' y ', player.y);
+                console.log('enemy  ', 'x ', enemy.x, ' y ', enemy.y);
+                console.log('player.y - enemy.y ', player.y - enemy.y);
+                console.log('player.x - enemy.x ', player.x - enemy.x);
+                console.log('***');
+            }
+        })
     }
 
     /* This function initially draws the "game level", it will then call

@@ -55,12 +55,22 @@ Player.prototype.handleInput = function(move) {
          this.x += this.x < 4 * xMove ? 101 : 0;
      }
      if(move === 'down') {
-         this.y += this.y < 5 * yMove ? yMove : 0;
+         this.y += this.y < 5 * 80 ? yMove : 0;
      }
      if(move === 'up') {
-         this.y -= this.y >= yMove ? yMove : 0;
+         //this.y -= this.y >= yMove ? yMove : 0;
+         if(this.y >= yMove ) {
+            this.y -= yMove
+         }else{
+            //you won feature
+         }
      }
 
+}
+
+Player.prototype.reset = function() {
+    this.x = 2 * 101;
+    this.y = 5 * 80;
 }
 
 // Now instantiate your objects.

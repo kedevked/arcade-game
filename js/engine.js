@@ -105,12 +105,7 @@ var Engine = (function(global) {
         allEnemies.forEach(enemy => {
             if((player.y - enemy.y < 3) &&
                 (player.x - enemy.x < 5 && player.x-enemy.x > -5)){
-                console.log('***');
-                console.log('player ', 'x ', player.x, ' y ', player.y);
-                console.log('enemy  ', 'x ', enemy.x, ' y ', enemy.y);
-                console.log('player.y - enemy.y ', player.y - enemy.y);
-                console.log('player.x - enemy.x ', player.x - enemy.x);
-                console.log('***');
+                player.reset();
             }
         })
     }

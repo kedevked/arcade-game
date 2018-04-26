@@ -1,6 +1,15 @@
-frontend-nanodegree-arcade-game
+arcade-game
 ===============================
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+## Description
+Arcade game is a simple and entertaining game. A player need to cross the street and avoid collisions with the enemies. If a collision does occur, the player start at its initial position (return to square one). If the player successfully cross the street without collision, a congratulation card appear. One can play any number of times by clicking on restart each time.
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+## How to play
+To play, one need to use the arrows keys:
+← : move to the left
+→ : move to the right
+↑ : move forward
+↓ : move backward
+
+## Contribution
+This game is done as part of the Nanodegree curriculum, so no pull request will be accepted.

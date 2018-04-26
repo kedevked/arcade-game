@@ -28,6 +28,10 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+Enemy.prototype.reset = function() {
+    //change the speed
+    this.speed = Math.round(Math.random() * 3) +1;
+}
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
@@ -58,17 +62,20 @@ Player.prototype.handleInput = function(move) {
          this.y += this.y < 5 * 80 ? yMove : 0;
      }
      if(move === 'up') {
-         //this.y -= this.y >= yMove ? yMove : 0;
          if(this.y >= yMove ) {
             this.y -= yMove
          }else{
-            //you won feature
+            //player won
+            document.querySelector('.wrap-hide').classList.remove('wrap-hide');
+            player.reset();
+            document.querySelector('canvas').style.display = 'none';
          }
      }
 
 }
 
 Player.prototype.reset = function() {
+    console.log('reset')
     this.x = 2 * 101;
     this.y = 5 * 80;
 }
@@ -78,11 +85,15 @@ Player.prototype.reset = function() {
 // Place the player object in a variable called player
 var allEnemies = []
 //two enemies
-for(var i = 0; i < 1; i++){
+for(var i = 0; i < 3; i++){
     allEnemies[i] = new Enemy();
-    /*setTimeout(()=> {
-
-    }, 2000)*/
+    setInterval(()=> {
+        if(allEnemies[0].x > 450){
+            allEnemies[allEnemies.length] = new Enemy();
+            allEnemies.splice(0, 1);
+        }
+        
+    }, 200)
 }
 
 var player = new Player()
@@ -100,3 +111,8 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+document.querySelector('.button-restart').addEventListener('click', function() {
+    document.querySelector('.wrap').classList.add('wrap-hide');
+    document.querySelector('canvas').style.display = '';
+})
